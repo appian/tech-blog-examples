@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    alias(libs.plugins.native.build.tools)
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+application {
+    mainClass = 'com.appian.hydrator.HydratorCli'
+}
+
+graalvmNative {
+    binaries {
+        main {
+            imageName = 'hydrator'
+            mainClass = 'com.appian.hydrator.HydratorCli'
+            fallback = false
+            debug = false
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+        }
+    }
+    toolchainDetection = false
+}

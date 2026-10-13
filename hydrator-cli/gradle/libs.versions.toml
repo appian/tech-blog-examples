@@ -1,0 +1,5 @@
+[versions]
+native-build-tools = "latest.release"
+
+[plugins]
+native-build-tools = { id = "org.graalvm.buildtools.native", version.ref = "native-build-tools" }
