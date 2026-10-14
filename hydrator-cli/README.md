@@ -1,8 +1,28 @@
 # Hydrator
 
+Deep Dive Blog => [Hydrator: Making EBS Snapshot Restoration Faster Through Prewarming](https://medium.com/appian-tech-blog/hydrator-8c3b430c17f1)
+
 Hydrator is a CLI tool for pre-warming EBS volumes that were restored from a snapshot.
 
 When an EBS volume is restored from a snapshot, its blocks are lazily fetched from S3 the first time they're touched. Until then, reads on that volume are slow. Hydrator forces those blocks to be fetched ahead of time so applications don't pay that cost later.
+
+## Installation
+
+Install the `hydrator` CLI into `~/.local/bin` with:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/appian/tech-blog-examples/refs/heads/main/hydrator-cli/install.sh | sh -s
+```
+
+The script detects your OS and architecture and downloads the matching release. Supported platforms are `linux-amd64`, `linux-arm64`, and `darwin-arm64`.
+
+To change the install directory or release tag:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/appian/tech-blog-examples/refs/heads/main/hydrator-cli/install.sh | sh -s -- --dir /usr/local/bin --tag hydrator-cli-v1
+```
+
+Run `sh -s -- --help` on the same command to see all options.
 
 ## How it works
 
