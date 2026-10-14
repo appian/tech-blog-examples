@@ -1,5 +1,7 @@
 # Hydrator
 
+Deep Dive Blog => [Hydrator: Making EBS Snapshot Restoration Faster Through Prewarming](https://medium.com/appian-tech-blog/hydrator-8c3b430c17f1)
+
 Hydrator is a CLI tool for pre-warming EBS volumes that were restored from a snapshot.
 
 When an EBS volume is restored from a snapshot, its blocks are lazily fetched from S3 the first time they're touched. Until then, reads on that volume are slow. Hydrator forces those blocks to be fetched ahead of time so applications don't pay that cost later.
